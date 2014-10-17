@@ -40,5 +40,4 @@ private
     params.require(:user).permit(:name, :surname,:email)
   end
 end
-
-end
+ 

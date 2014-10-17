@@ -83,7 +83,7 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
-  test "Production year must be less tahn or equal to 2100" do
+  test "Production year must be less than or equal to 2100" do
     car = Car.new(valid_car_hash)
     car.production_year = 2101
 
@@ -92,6 +92,8 @@ class CarTest < ActiveSupport::TestCase
     error = "must be less than or equal to 2100"
     assert car.errors[:production_year].include?(error)
   end
+
+
 
 
   # helper methods

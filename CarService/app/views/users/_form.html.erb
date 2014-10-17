@@ -22,10 +22,7 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
     </div>
-    <div class="field">
-    <%= f.label :renatal_id%><br>
-    <%= f.collection_select :rental_id,Rental.order(:id), :id, :name, include_blank: true %>
-    </div>
+     
     <div class="actions">
     <%= f.submit %>
     </div>

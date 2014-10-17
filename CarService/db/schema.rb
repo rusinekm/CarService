@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017104226) do
+ActiveRecord::Schema.define(version: 20141017130744) do
+
+  create_table "add_pesel_column_to_users", force: true do |t|
+    t.integer  "pesel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "add_rented_to_column_to_rentals", force: true do |t|
+    t.date     "rented_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cars", force: true do |t|
     t.string   "brand"

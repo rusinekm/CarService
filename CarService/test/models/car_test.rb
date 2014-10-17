@@ -72,6 +72,45 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
+  test "Production year must be greater or equal to 1900" do
+    car = Car.new(valid_car_hash)
+    car.production_year = 1899
+
+    assert_equal false, car.valid?
+    error = "must be greater than or equal to 1900"
+    assert car.errors[:production_year].include?(error)
+  end
+
+
+  test "Production year must be less than or equal to 2100" do
+    car = Car.new(valid_car_hash)
+    car.production_year = 2101
+
+    assert_equal false, car.valid?
+    error = "must be less than or equal to 2100"
+    assert car.errors[:production_year].include?(error)
+  end
+
+
+  test "Mileage must be a positive number" do
+    car = Car.new(valid_car_hash)
+    car.mileage = -1
+
+    assert_equal false, car.valid?
+    error = "must be greater than or equal to 0"
+    assert car.errors[:mileage].include?(error)
+  end
+
+
+  test "Last service must be a date" do
+    car = Car.new(valid_car_hash)
+    car.last_service = "2100-10-10"
+
+    assert_equal false, car.valid?
+    error = "must be a date, can't be in future"
+    assert car.errors[:last_service].include?(error)
+  end
+
   # helper methods
   def valid_car_hash 
     {

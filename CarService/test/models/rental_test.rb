@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class RentalTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'Create rental' do
+    assert_difference("Rental.count", 1) do
+    Rental.create()
+  end
+
 end

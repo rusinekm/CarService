@@ -9,6 +9,13 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
+  test "Brand cannot be blank" do
+    car = Car.new(valid_car_hash)
+    car.brand = nil
+
+    assert_equal false, car.valid?
+    assert blank_error(car, :brand)
+  end
 
 
 
@@ -23,7 +30,9 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
- 
+  def blank_error(obj, sym)
+    obj.errors[sym].include?("can't be blank")
+  end
 
 
 end

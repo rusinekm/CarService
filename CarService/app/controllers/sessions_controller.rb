@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_if_exits(params[:email]) # metoda do zrobienia jeszcze
+    user = User.find_if_exits(params[:name]) # metoda do zrobienia jeszcze
     if user && user.authenticate(params[:password]) 
       session[:user_id] = user.id
       redirect_to root_url, notice: "logged in!"

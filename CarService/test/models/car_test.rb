@@ -54,6 +54,24 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
+  test "Mileage must be a number" do
+    car = Car.new(valid_car_hash)
+    car.mileage = "number"
+
+    assert_equal false, car.valid?
+    assert car.errors[:mileage].include?("is not a number")
+  end
+
+
+  test "Production year must be a number" do
+    car = Car.new(valid_car_hash)
+    car.production_year = "number"
+
+    assert_equal false, car.valid?
+    assert car.errors[:production_year].include?("is not a number")
+  end
+
+
   # helper methods
   def valid_car_hash 
     {

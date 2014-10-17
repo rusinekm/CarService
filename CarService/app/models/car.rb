@@ -3,8 +3,11 @@ class Car < ActiveRecord::Base
   validates :brand, :model, :production_year, 
             :mileage, :last_service, presence: true
 
-  validates :production_year, :mileage, 
-            numericality: { only_integer: true }
+  validates :mileage, numericality: { only_integer: true }
+  
+  validates :production_year, numericality: { 
+                              greater_than_or_equal_to: 1900,
+                              less_than_or_equal_to: 2100}
 
   def isrented
     result = false
@@ -15,4 +18,7 @@ class Car < ActiveRecord::Base
     end
     result 
   end
+
+
+
 end

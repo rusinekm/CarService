@@ -77,7 +77,6 @@ class CarTest < ActiveSupport::TestCase
     car.production_year = 1899
 
     assert_equal false, car.valid?
-    #p car.errors[:production_year]
     error = "must be greater than or equal to 1900"
     assert car.errors[:production_year].include?(error)
   end
@@ -88,12 +87,19 @@ class CarTest < ActiveSupport::TestCase
     car.production_year = 2101
 
     assert_equal false, car.valid?
-    #p car.errors[:production_year]
     error = "must be less than or equal to 2100"
     assert car.errors[:production_year].include?(error)
   end
 
 
+  test "Mileage must be a positive number" do
+    car = Car.new(valid_car_hash)
+    car.mileage = -1
+
+    assert_equal false, car.valid?
+    error = "must be greater than or equal to 0"
+    assert car.errors[:mileage].include?(error)
+  end
 
 
   # helper methods

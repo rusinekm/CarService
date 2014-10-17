@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  production_year: 1
+  mileage: 1
+  last_service: 2014-10-17
+
+two:
+  brand: MyString
+  model: MyString
+  production_year: 1
+  mileage: 1
+  last_service: 2014-10-17

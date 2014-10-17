@@ -22,5 +22,15 @@ class Car < ActiveRecord::Base
 
 
 
+
+  validate :proper_last_service_date
+
+  def proper_last_service_date
+    if last_service && last_service > Date.today
+      msg = "must be a date, can't be in future"
+      errors.add(:last_service, msg)
+    end
+  end
+
 end
 

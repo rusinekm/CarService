@@ -102,6 +102,15 @@ class CarTest < ActiveSupport::TestCase
   end
 
 
+  test "Last service must be a date" do
+    car = Car.new(valid_car_hash)
+    car.last_service = "2100-10-10"
+
+    assert_equal false, car.valid?
+    error = "must be a date, can't be in future"
+    assert car.errors[:last_service].include?(error)
+  end
+
   # helper methods
   def valid_car_hash 
     {

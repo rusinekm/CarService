@@ -1,4 +1,4 @@
-<h1>Cars Index</h1>
+<h1>Users Index</h1>
 
 
 <table border="1" >
@@ -8,7 +8,8 @@
       <th>Name</th>
       <th>Surname</th>
       <th>E-mail</th>
-    
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
      <tbody>
      
@@ -18,8 +19,8 @@
         <td><%= users.name %></td>
         <td><%= users.surname %></td>
         <td><%= users.email %></td>
-        <td><%= link_to 'Edit', edit_admin_users_path(users) %></td>
-        <td><%= link_to 'Destroy', admin_users_path(users), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_user_path(users) %></td>
+        <td><%= link_to 'Destroy', user_path(users), method: :delete, data: { confirm: 'Are you sure?' } %></td>
          </tr>     
       <% end %>
   </tbody>
@@ -27,4 +28,4 @@
   </table>
   
 
-  <%= link_to 'List', admin_cars_path%> 
+  <%= link_to 'List', users_path%> 

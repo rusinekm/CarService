@@ -31,17 +31,20 @@ class Car < ActiveRecord::Base
 
   def self.search(params)
     if params[:user_id]
-      ids = Rental.where(user_id: param:user_name.map(&:car_id)
-      Article.where("id in (?)", ids)
+      ids = Rental.where(user_id: params[:user_id]).map(&:car_id)
+      Car.where("id in (?)", ids)
     elsif params[:search]
-      search_words = params[:search].split(',').map(&:strip).uniq
+      final = []
+      search_words = params[:search].split(',').split(' ').map(&:strip).uniq
       seaarch_words.each do |search|
-        ids = Article.where('model LIKE ?', "%#{search}%") 
-        ids += Article.where('brand LIKE ?', "%#search]%")
         ids += Rental.where(user_name: search).map(&:car_id)
-        Article.where("id in (?)", ids) 
+        ids += Rental.where(user_surname: search).map(&:car_id)
+        final +=Car.where("id in (?)", ids.uniq)
+        final += Car.where('model LIKE ?', "%#{search}%") 
+        final += Car.where('brand LIKE ?', "%#search]%")
+        final
     else
-      Article.all
+      Car.all
     end
   end
 end

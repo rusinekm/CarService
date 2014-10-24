@@ -1,9 +1,10 @@
 class Car < ActiveRecord::Base
 
-  validates :brand, :model, :production_year, 
-            :mileage, :last_service, presence: true
 
+  validates :brand, :model, :production_year,
+            :mileage, :last_service, presence: true
   validates :mileage, numericality: { greater_than_or_equal_to: 0 }
+ 
 
   validate :proper_last_service_date
   
@@ -12,6 +13,7 @@ class Car < ActiveRecord::Base
                               less_than_or_equal_to: 2100}
   has_many :rentals
   has_many :users, through: :rentals
+ 
 
   def is_rented
     result = false
@@ -20,7 +22,7 @@ class Car < ActiveRecord::Base
         result = rental
       end
     end
-    result 
+      result
   end
 
   def proper_last_service_date
@@ -35,6 +37,7 @@ class Car < ActiveRecord::Base
       ids = Rental.where(user_id: params[:user_id]).map(&:car_id)
       Car.where("id in (?)", ids)
     elsif params[:search]
+
       final = Car.all
       ids = Car.all
       search_words = params[:search].split(' ').map(&:strip).uniq
@@ -50,5 +53,5 @@ class Car < ActiveRecord::Base
       Car.all
     end
   end
-end
 
+end

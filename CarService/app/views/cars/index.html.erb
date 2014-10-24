@@ -5,9 +5,10 @@
   <div class="carContents">
      production year: <%= car.production_year %>, mileage: <%= car.mileage %> last service: <%= car.last_service %>
     <br>
-    <% rent = car.is_rented? %>
+    <% rent = car.is_rented %>
     <% if rent %>
-      Car is currently rented. It is in hands of <%= link_to rent.user.name, cars_path(user_id: rent.user.user_id) %> and is rented until <%= rent.rented_to %>
+
+      Car is currently rented. It is in hands of <%= link_to rent.user.name+" "+rent.user.surname, cars_path(user_id: rent.user_id) %> and is rented until <%= rent.rented_to %>
     <% else %>
       Car is free. You can rent if you wish to
     <% end %>

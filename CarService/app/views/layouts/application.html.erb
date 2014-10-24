@@ -2,23 +2,39 @@
 <html>
 <head>
   <title>CarService</title>
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="TOBEDONE!!!!!">
-  <%= link_to 'New Client', new_user_path, class: "btn btn-primary" %>
-  <%= link_to 'New Car', new_car_path, class: "btn btn-primary" %>
-  <%= link_to 'New Rental', new_rental_path, class: "btn btn-primary" %>
-  <%= form_tag cars_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-  <% end %>
-</div>
-<%= yield %>
+
+  <div id='page_wrapper'>
+
+    <div id='navbar'>
+      <div id='nav_btns' class='nav_elem'>
+        <%= link_to 'New Client', new_user_path, class: "btn" %>
+        <%= link_to 'New Car', new_car_path, class: "btn" %>
+        <%= link_to 'New Rental', new_rental_path, class: "btn" %>
+        <%= form_tag cars_path, :method => 'get' do %>
+      </div>
+      <div id='nav_search' class='nav_elem'>
+        <%= text_field_tag :search, params[:search], :class=>'right text_form' %>
+        <%= submit_tag "Search", :name => nil, :class=>'right submit' %>
+      </div>
+      <% end %>
+
+    </div>
+
+
+    <div id='content_wrapper'>
+      <%= yield %>
+    </div>
+
+    <footer> RENT A CAR </footer>
+  </div> <!-- page_wrapper -->
+
 
 </body>
 </html>

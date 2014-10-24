@@ -9,23 +9,27 @@
       </ul>
     </div>
   <% end %>
+
+  <h1>New Car</h1>
+
+
   <div class="field">
-    <%= f.label :brand %><br>
-    <%= f.text_area :brand %>
+    <%= f.label :brand, :class=>'label' %><br>
+    <%= f.text_area :brand, :class=>'text_form' %>
   </div>
   <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_area :model %>
+    <%= f.label :model, :class=>'label' %><br>
+    <%= f.text_area :model, :class=>'text_form' %>
   </div>  
    <div class="field">
-    <%= f.label :production_year %><br>
-    <%= f.text_area :production_year %>
+    <%= f.label :production_year, :class=>'label' %><br>
+    <%= f.text_area :production_year, :class=>'text_form' %>
   </div>  
   <div class="field">
-    <%= f.label :mileage %><br>
-    <%= f.text_area :mielage %>
+    <%= f.label :mileage, :class=>'label' %><br>
+    <%= f.text_area :mileage, :class=>'text_form' %>
   </div>  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>'submit' %>
   </div>
 <% end %>

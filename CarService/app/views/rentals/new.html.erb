@@ -16,7 +16,7 @@
   </div>
   <div class ="field">
     <%= f.label :car_id %>
-    <%= f.collection_select :ar_id, Car.order(:id),:id,:model, include_blank: false %>
+    <%= f.collection_select :car_id, Car.order(:id),:id,:model, include_blank: false %>
   </div>
   <div class="field">
     <%= f.submit %>

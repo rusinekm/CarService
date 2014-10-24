@@ -1,0 +1,15 @@
+<% @cars.each do |car| %>
+  <div class="carname">
+    <%= car.name %>
+  </div>
+  <div class="carContents">
+    brand: <%= car.brand %>, model: <%= car.model %>, production year: <%= car.production_year %>, mileage: <%= car.mileage %> last service: <%= car.last_service %>
+    <br>
+    <% rent = car.is_rented? %>
+    <% if rent %>
+      Car is currently rented. It is in hands of <%= rent.user.name %> and is rented until <%= rent.rented_to %>
+    <% else %>
+      Car is free. You can rent if you wish to
+    <% end %>
+  </div>
+<% end %>

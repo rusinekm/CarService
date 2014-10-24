@@ -17,7 +17,8 @@ class CarsController < ApplicationController
     else
       render 'new'
     end
-
+  end
+  
 private
   
   def car_params

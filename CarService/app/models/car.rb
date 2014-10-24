@@ -11,7 +11,7 @@ class Car < ActiveRecord::Base
                               greater_than_or_equal_to: 1900,
                               less_than_or_equal_to: 2100}
   has_many :rentals
-  has_many :users, through :rentals
+  has_many :users, through: :rentals
 
   def is_rented?
     result = false

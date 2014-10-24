@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
   resources :users
-  resources :cars, only: [:index,:show,]
-  resources :rentals, only: [:index,:show]
+  resources :cars, only: [:index,:show,:new]
+  resources :rentals, only: [:index,:show, :new]
   resources :categories
   
   get 'signup', to: 'users#new', as: 'signup'

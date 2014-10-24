@@ -1,0 +1,24 @@
+<%= form_for(@rental) do |f| %>
+  <% if @rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being finished</h2>
+
+      <ul>
+      <% @rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.collection_select :user_id, User.order(:id),:id,:name, include_blank: false %>
+  </div>
+  <div class ="field">
+    <%= f.label :car_id %>
+    <%= f.collection_select :ar_id, Car.order(:id),:id,:model, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.submit %>
+  </div>
+<% end %>

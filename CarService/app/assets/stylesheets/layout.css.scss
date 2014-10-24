@@ -1,0 +1,184 @@
+/* -- colors, fonts -- */
+$gray2: #888;
+
+$blue: #024059;
+$darkblue: #012E40;
+$lightblue: #05A5E5;
+
+$gray: #90ADB8;
+
+$orange: #F23005;
+$red: #A61103;
+$lightyellow: #FFC685;
+
+
+
+$font1: 'Lato';
+$font2: 'Lobster';
+
+
+/* html elements */
+p {
+    font: normal 1em $font1;
+}
+
+h1 {
+  margin-left: 1em;
+  font: bold 2em $font1;
+  letter-spacing: 2px;
+}
+
+footer {
+  height: 1em;
+  width: 8em;
+  margin: 0.2em auto;
+  font: bold 3em $font2;
+  text-align: center;
+  color: $red;
+
+}
+
+
+
+/* -- other -- */
+#page_wrapper {
+  width: 90%;
+
+  border: solid 1px $gray2;
+  margin: 0 auto;
+
+  background-color: $gray;
+}
+
+#content_wrapper {
+  padding: 15% 10%;
+}
+
+
+#navbar {
+  position: fixed;
+  min-height: 7%;
+  width: inherit;
+
+  margin: 0 auto;
+
+  background-color: $blue;
+}
+
+#navbar .nav_elem {
+  display: inline-block;
+  margin: 0 auto;
+  width: 50%;
+
+  margin-top: 1%;
+}
+
+#nav_search {
+  margin-top: 0.3em;
+  margin-right: 2em;
+  float: right;
+}
+
+#nav_btns {
+  margin-left: 5%;
+}
+
+
+.btn {
+  display: inline-block;
+
+  padding: 0.3em;
+  margin-left: 2em;
+  margin-bottom: 0.3em;
+  border: solid 2px #fff;
+  border-radius: 1em;
+
+
+  font: bold 1em $font1;
+  color: #fff;
+  background-color: $darkblue;
+
+  text-decoration: none;
+}
+
+.btn:hover, .btn:active {
+  background-color: $orange;
+}
+
+.left {
+  float: left;
+  margin-left: 1em;
+}
+
+.right {
+  float: right;
+  margin-right: 2em;
+}
+
+.submit {
+  padding: 0.3em;
+  border-radius: 1em;
+
+  background-color: $red;
+  color: #fff;
+}
+
+.submit:hover, .submit:active {
+  background-color: $orange;
+}
+
+.text_form {
+  padding: 0.3em;
+  border-radius: 1em;
+
+  line-height: 1;
+}
+
+.text_form:focus {
+  background-color: $lightyellow;
+  font-weight: bold;
+}
+
+.label {
+  margin-left: 0.5em;
+  color: $blue;
+}
+
+
+.back_link {
+  display: block;
+  width: 30%;
+
+  margin: 2em 0;
+  border: solid 2px #fff;
+  border-radius: 1em;
+
+  font: 1.5em $font1;
+  text-align: center;
+  text-decoration: none;
+  color: $darkblue;
+  background-color: $lightblue;
+}
+
+.back_link:hover, .back_link:active {
+  background-color: $orange;
+}
+
+
+table th {
+  padding: 0.6em;
+  font: normal 1.2em $font1;
+  color: $blue;
+}
+
+.field {
+    margin: 1.5em 0;
+    font: 1.2em 'Lato';
+}
+
+
+/*
+table th:nth-child(odd) {
+  background-color: #fff;
+}
+*/

@@ -10,7 +10,8 @@ class Car < ActiveRecord::Base
   validates :production_year, numericality: { 
                               greater_than_or_equal_to: 1900,
                               less_than_or_equal_to: 2100}
-
+  has_many :rentals
+  has_many :users, through :rentals
 
   def is_rented?
     result = false
@@ -43,6 +44,7 @@ class Car < ActiveRecord::Base
         final += Car.where('model LIKE ?', "%#{search}%") 
         final += Car.where('brand LIKE ?', "%#search]%")
         final
+      end
     else
       Car.all
     end

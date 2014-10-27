@@ -13,9 +13,9 @@ class Car < ActiveRecord::Base
   has_many :rentals
   has_many :users, through: :rentals
 
-  def is_rented?
+  def is_rented
     result = false
-    car.rentals.each do |rental|
+    rentals.each do |rental|
       if rental.rented_to > Date.today()
         result = rental
       end
@@ -35,16 +35,17 @@ class Car < ActiveRecord::Base
       ids = Rental.where(user_id: params[:user_id]).map(&:car_id)
       Car.where("id in (?)", ids)
     elsif params[:search]
-      final = []
-      search_words = params[:search].split(',').split(' ').map(&:strip).uniq
-      seaarch_words.each do |search|
-        ids += Rental.where(user_name: search).map(&:car_id)
-        ids += Rental.where(user_surname: search).map(&:car_id)
-        final +=Car.where("id in (?)", ids.uniq)
-        final += Car.where('model LIKE ?', "%#{search}%") 
-        final += Car.where('brand LIKE ?', "%#search]%")
-        final
+      final = Car.all
+      ids = Car.all
+      search_words = params[:search].split(' ').map(&:strip).uniq
+      search_words.each do |search|
+         ids = Rental.all.joins(:user).group(:user_id).where('users.name = ? OR users.surname = ?',search, search).map(&:car_id)
+        final = Car.where("id in (?)", ids)
+
+        final = Car.where("brand LIKE ? OR model LIKE ? ", "%#{search}%", "%#{search}%") unless final != []
+
       end
+      final
     else
       Car.all
     end

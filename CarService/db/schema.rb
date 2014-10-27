@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017130744) do
-
-  create_table "add_pesel_column_to_users", force: true do |t|
-    t.integer  "pesel"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "add_rented_to_column_to_rentals", force: true do |t|
-    t.date     "rented_to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141024103638) do
 
   create_table "cars", force: true do |t|
     t.string   "brand"
@@ -40,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141017130744) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "rented_to"
   end
 
   create_table "users", force: true do |t|
@@ -49,6 +38,7 @@ ActiveRecord::Schema.define(version: 20141017130744) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pesel"
   end
 
 end

@@ -1,17 +1,19 @@
-<p ><%= notice %></p>
+<div><%= notice %></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1>User</h1>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @user.surname %>
-</p>
+<div class='show_box'>
+  <div class='label'>Name:</div>
+  <div class='show_line'><%= @user.name %></div>
+</div>
 
-<p>
-  <strong>E_mail:</strong>
-  <%= @user.email %>
-</p>
+<div class='show_box'>
+  <div class='label'>Surname:</div>
+  <div class='show_line'><%= @user.surname %></div>
+</div>
+
+<div class='show_box'>
+  <div class='label'>E_mail:</div>
+  <div class='show_line'><%= @user.email %></div>
+</div>
  

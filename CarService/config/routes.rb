@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :users, only: [:new]
+  resources :users, only: [:index, :new]
   resources :cars, only: [:index,:show,:new]
   resources :rentals, only: [:index,:show, :new]
-  resources :sessions
-  resources :operators
+  resources :sessions, only: [:new, :destroy]
   resources :categories
   
   get 'login', to: 'sessions#new', as: 'login'

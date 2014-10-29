@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
     if current_operator
       @rental = Rental.new(rental_params)
       if @rental.save
-        redirect_to @rental
+        redirect_to root_url
       else
         render 'new'
       end

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :users
+  resources :users, only: [:new]
   resources :cars, only: [:index,:show,:new]
   resources :rentals, only: [:index,:show, :new]
+  resources :sessions
+  resources :operators
   resources :categories
   
-  get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   root "cars#index"

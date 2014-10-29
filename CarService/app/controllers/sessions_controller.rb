@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
+
   def new
   end
   
   def create
-    user = User.find_if_exits(params[:name]) # metoda do zrobienia jeszcze
-    if user && user.authenticate(params[:password]) 
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "logged in!"
+     operator = Operator.find_by_login(params[:login])
+    if operator && operator.authenticate(params[:password]) 
+      session[:operator_id] = operator.id
+      redirect_to root_url, notice: "logged in! YAY"
     else
       flash.now.alert = "login or password is invalid"
       render "new"
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
   end 
 
   def destroy
-     session[:user_id] = nil
+     session[:operator_id] = nil
      redirect_to root_url, notice: "Logged out"
   end
 end

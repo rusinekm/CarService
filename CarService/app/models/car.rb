@@ -1,6 +1,5 @@
 class Car < ActiveRecord::Base
 
-
   validates :brand, :model, :production_year,
             :mileage, :last_service, presence: true
   validates :mileage, numericality: { greater_than_or_equal_to: 0 }
@@ -9,8 +8,9 @@ class Car < ActiveRecord::Base
   validate :proper_last_service_date
   
   validates :production_year, numericality: { 
-                              greater_than_or_equal_to: 1900,
-                              less_than_or_equal_to: 2100}
+    greater_than_or_equal_to: 1900,
+    less_than_or_equal_to: 2100}
+
   has_many :rentals
   has_many :users, through: :rentals
  
@@ -34,24 +34,23 @@ class Car < ActiveRecord::Base
 
   def self.search(params)
     if params[:user_id]
-      ids = Rental.where(user_id: params[:user_id]).map(&:car_id)
-      Car.where("id in (?)", ids)
+      car_ids = Rental.where(user_id: params[:user_id]).map(&:car_id)
+      Car.where(id: car_ids)
     elsif params[:search]
-
-      final = Car.all
-      ids = Car.all
+      car_ids = []
       search_words = params[:search].split(' ').map(&:strip).uniq
       search_words.each do |search|
-         ids = Rental.all.joins(:user).group(:user_id).where('users.name = ? OR users.surname = ?',search, search).map(&:car_id)
-        final = Car.where("id in (?)", ids)
-
-        final = Car.where("brand LIKE ? OR model LIKE ? ", "%#{search}%", "%#{search}%") unless final != []
-
+        car_ids += Rental.all.joins(:user).group(:user_id).where('users.name = ? OR users.surname = ?',search, search).map(&:car_id)
+        car_ids += Car.where("brand LIKE ? OR model LIKE ? ", "%#{search}%", "%#{search}%").map(&:id)
       end
-      final
+      Car.where(id: car_ids.uniq)
     else
       Car.all
     end
   end
 
+  def full_car
+       "#{brand} #{model}"
+  end
 end
+

@@ -21,6 +21,19 @@ def create
 		render 'new'
 	end
 
+  def create
+    if current_operator   
+      @car = Car.new(car_params)
+      if @car.save
+        redirect_to @car
+      else
+        render 'new'
+      end
+    else
+      flash.now.alert = "You must be logged in to add new cars to system"
+    end
+  end
+  
 private
 
 	def car_params

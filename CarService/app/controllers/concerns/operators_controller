@@ -1,0 +1,22 @@
+  class OperatorsController < ApplicationController
+  
+def new
+    @operator = Operator.new
+  end
+
+  def create
+    @operator = Operator.new(operator_params)
+    respond_to do |format|
+      if @operator.save
+        session[:operator_id] = @operator.id
+        format.html { redirect_to cars_path, notice: 'You just signed in' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+  def user_params
+    params.require(:operator).permit(:login, :password, :password_confirmation)
+  end
+end

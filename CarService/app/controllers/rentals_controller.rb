@@ -1,10 +1,11 @@
 class RentalsController < ApplicationController
- 
+
   def new
     if current_operator
       @rental = Rental.new
     else
-      flash.now.alert = "You must be logged in to add new rentals to system"
+      flash.alert = "You must be logged in to add new rentals to system"
+      redirect_to root_url
     end
   end
 
@@ -22,6 +23,6 @@ class RentalsController < ApplicationController
   end
   
   def rental_params
-    params.require(:rental).permit(:user_id, :car_id, :rented_to)
+    params.require(:rental).permit(:user_id, :car_id)
   end
 end

@@ -1,0 +1,17 @@
+<% cars.each do |car| %>
+  <div class="carName">
+   brand: <%= car.brand %>, model: <%= car.model %>,
+  </div>
+  <div class="carContents">
+     production year: <%= car.production_year %>, mileage: <%= car.mileage %> last service: <%= car.last_service %>
+    <br>
+    <% rent = car.is_rented %>
+    <% if rent %>
+
+      Car is currently rented. It is in hands of <%= link_to rent.user.full_name, cars_path(user_id: rent.user_id) %> and is rented until <%= rent.rented_to %>
+    <% else %>
+      Car is free. You can rent if you wish to
+    <% end %>
+  </div>
+<% end %>
+<%= will_paginate cars %>

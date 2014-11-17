@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_operator
+      @user = User.new
+    else
+      redirect_to root_url
   end
 
   def create

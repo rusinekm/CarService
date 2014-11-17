@@ -111,6 +111,7 @@ class CarTest < ActiveSupport::TestCase
     assert car.errors[:last_service].include?(error)
   end
 
+  
   # helper methods
   def valid_car_hash 
     {

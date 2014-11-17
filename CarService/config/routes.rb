@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :users, only: [:index, :new]
-  resources :cars, only: [:index,:show,:new]
-  resources :rentals, only: [:index,:show, :new]
-  resources :sessions, only: [:new, :destroy]
+  resources :users, only: [:index, :new, :create]
+  resources :cars
+  resources :rentals, only: [:index, :show, :new, :create]
+  resources :sessions, only: [:index, :new, :destroy, :create]
   resources :categories
   
   get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   root "cars#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

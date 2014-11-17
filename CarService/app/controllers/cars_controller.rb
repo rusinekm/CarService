@@ -4,32 +4,28 @@ class CarsController < ApplicationController
  
   def index
     @cars = Car.search(params).paginate(:page => params[:page], :per_page => 5)
+    @rental = Rental.new
   end
  
  
   def new
-		@car = Car.new
-	end
-
-
-
-def create
-		@car = Car.new(car_params)
-	if @car.save
-		redirect_to @car
-	else
-		render 'new'
+    if current_operator
+		  @car = Car.new
+    else
+      redirect to root_url
+    end
 	end
 
   def create
     if current_operator   
       @car = Car.new(car_params)
       if @car.save
-        redirect_to @car
+        redirect_to root_url
       else
         render 'new'
       end
     else
+      redirect_to root_url
       flash.now.alert = "You must be logged in to add new cars to system"
     end
   end
@@ -40,5 +36,4 @@ private
 		params.require(:car).permit(:brand, :model, :production_year, :mileage)
 	end
 
-	end
-end 
+end
